@@ -128,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
    grid-area: Content;
    display: grid;
    grid-template: 1fr / 1fr minmax(auto, 300px) minmax(auto, 900px) 1fr;
-   grid-template-areas: "List Info" "List Album";
+   grid-template-areas: "List Info" "List Info";
 }
 
 @media (max-width: 850px) {
@@ -191,9 +191,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Блок информации пользователей */
 
-.user-ifno {
+.profile-info {
    grid-area: Info;
    grid-column: 3/4;
+}
+
+.user-ifno {
    padding: 0px 0px 0px 150px;
 }
 
@@ -231,8 +234,6 @@ hr {
 }
 
 .user-albums {
-   grid-area: Album;
-   grid-column: 3 / 4;
 }
 
 .user-albums__title {

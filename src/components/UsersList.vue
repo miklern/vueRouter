@@ -4,6 +4,7 @@
       <div
         v-for="user in names"
         :key="user.id"
+        @click="$emit('onUserSelect', user.id), activeName = user.id"
         :class="{active: activeName === user.id}"
         class="users-list__name"
       >{{ user.name }}</div>
@@ -15,15 +16,11 @@
 import { fetchUsersNames } from "../services/users";
 
 export default {
-  props: {
-    activeName: {
-      type: Number,
-    },
-  },
   name: "UsersList",
   data() {
     return {
       names: [],
+      activeName: null,
     };
   },
   async created() {
