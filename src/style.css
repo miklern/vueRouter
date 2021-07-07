@@ -191,6 +191,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Блок информации пользователей */
 
+.not-chosen {
+   grid-area: Info;
+   grid-column: 3/4;
+   padding: 0 0 0 50px;
+   font-size: 24px;
+}
+
 .profile-info {
    grid-area: Info;
    grid-column: 3/4;
@@ -228,10 +235,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Блок альбомов */
-
-hr {
-   border: 1px solid #F4F3F1;
-}
 
 .user-albums {
 }

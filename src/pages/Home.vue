@@ -1,6 +1,7 @@
 <template>
   <div class="content">
     <UsersList @onUserSelect="onUserSelectName" />
+    <div v-if="selectedNameId === null" class="not-chosen">Ни один из профилей (юзер) не выбран!!!</div>
     <ProfileInfo v-if="selectedNameId !== null" :userId="selectedNameId" />
   </div>
 </template>
