@@ -13,14 +13,18 @@ async function fetchUsersNames() {
    }
 }
 
-async function fetchOneUser(filters = {}) {
+async function fetchOneUser(id) {
 
-   try {
-      const result = await axios.get(`${URL}/${SLUG}`, { params: filters });
+   if (!id){
+      return null;
+    }
+  
+    try {
+      const result = await axios.get(`${URL}/${SLUG}/${id}`);
       return result.data;
-   } catch (e) {
+    } catch (e) {
       console.log({ ...e });
-   }
+    }
 }
 
 export {

@@ -2,38 +2,38 @@
   <div class="profile-info">
     <div class="user-ifno">
       <div
-        class="user-ifno__block"
+        class="user-ifno__block" v-if="userId !== null"
       >
         <div class="user-info__title">
-          Info about: {{ usersInformation.name }}
+          Info about: {{ userInformation.name }}
         </div>
         <div class="user-info__item">
           <span>Username:</span>
-          {{ usersInformation.username }}
+          {{ userInformation.username }}
         </div>
         <div class="user-info__item">
           <span>Email:</span>
-          {{ usersInformation.email }}
+          {{ userInformation.email }}
         </div>
         <div class="user-info__item">
           <span>Street:</span>
-          {{ usersInformation.address.street }}
+          {{ userInformation.address.street }}
         </div>
         <div class="user-info__item">
           <span>Suite:</span>
-          {{ usersInformation.address.suite }}
+          {{ userInformation.address.suite }}
         </div>
         <div class="user-info__item">
           <span>City:</span>
-          {{ usersInformation.address.city }}
+          {{ userInformation.address.city }}
         </div>
         <div class="user-info__item">
           <span>Phone:</span>
-          {{ usersInformation.phone }}
+          {{ userInformation.phone }}
         </div>
         <div class="user-info__item">
           <span>Website:</span>
-          {{ usersInformation.website }}
+          {{ userInformation.website }}
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      usersInformation: {},
+      userInformation: {},
       userAlbums: [],
     };
   },
@@ -77,13 +77,13 @@ export default {
   },
   methods: {
     async getUserInfo() {
-      const filters = {};
-      if (this.userId !== null) {
-        filters.id = this.userId;
-      }
-      const usersInformation = await fetchOneUser(filters);
-      if (usersInformation) {
-        this.usersInformation = usersInformation.shift();    
+    if (!this.userId) {
+      return null
+    }
+      const userInformation = await fetchOneUser(this.userId);
+      if (userInformation) {
+        this.userInformation = {...userInformation};   
+        console.log(this.userInformation);
       }
     },
     async getUserAlbum() {
