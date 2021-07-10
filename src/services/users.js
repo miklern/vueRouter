@@ -4,7 +4,7 @@ const URL = 'https://jsonplaceholder.typicode.com';
 
 const SLUG = 'users';
 
-async function fetchUsersInfo() {
+async function fetchUsersList() {
    try {
       const result = await axios.get(`${URL}/${SLUG}`);
       return result.data;
@@ -28,6 +28,6 @@ async function fetchOneUser(id) {
 }
 
 export {
-   fetchUsersInfo,
+   fetchUsersList,
    fetchOneUser,
 };

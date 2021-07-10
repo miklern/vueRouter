@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { fetchUsersInfo } from "../services/users";
+import { fetchUsersList } from "../services/users";
 export default {
   name: "UsersList",
   data() {
@@ -25,7 +25,7 @@ export default {
     };
   },
   async created() {
-    const usersInfo = await fetchUsersInfo();
+    const usersInfo = await fetchUsersList();
     if (usersInfo) {
       this.usersInfo = usersInfo;
     }
