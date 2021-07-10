@@ -2,7 +2,7 @@
   <div class="users-list">
     <div class="users-list__body">
       <div
-        v-for="user in usersInfo"
+        v-for="user in usersList"
         :key="user.id"
         @click="$emit('onUserSelect', user.id), (activeName = user.id)"
         :class="{ active: activeName === user.id }"
@@ -20,14 +20,14 @@ export default {
   name: "UsersList",
   data() {
     return {
-      usersInfo: [],
+      usersList: [],
       activeName: null,
     };
   },
   async created() {
-    const usersInfo = await fetchUsersList();
-    if (usersInfo) {
-      this.usersInfo = usersInfo;
+    const usersList = await fetchUsersList();
+    if (usersList) {
+      this.usersList = usersList;
     }
   },
 };
