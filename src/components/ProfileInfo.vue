@@ -82,7 +82,7 @@ export default {
     }
       const userInformation = await fetchOneUser(this.userId);
       if (userInformation) {
-        this.userInformation = {...userInformation};   
+        this.userInformation = userInformation;   
         console.log(this.userInformation);
       }
     },

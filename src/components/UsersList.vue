@@ -2,7 +2,7 @@
   <div class="users-list">
     <div class="users-list__body">
       <div
-        v-for="user in names"
+        v-for="user in userInfo"
         :key="user.id"
         @click="$emit('onUserSelect', user.id), (activeName = user.id)"
         :class="{ active: activeName === user.id }"
@@ -15,19 +15,19 @@
 </template>
 
 <script>
-import { fetchUsersNames } from "../services/users";
+import { fetchUsersInfo } from "../services/users";
 export default {
   name: "UsersList",
   data() {
     return {
-      names: [],
+      userInfo: [],
       activeName: null,
     };
   },
   async created() {
-    const names = await fetchUsersNames();
-    if (names) {
-      this.names = names;
+    const userInfo = await fetchUsersInfo();
+    if (userInfo) {
+      this.userInfo = userInfo;
     }
   },
 };
