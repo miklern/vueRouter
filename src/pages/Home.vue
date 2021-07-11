@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-    <UsersList @onUserSelect="onUserSelectName" />
-    <div v-if="selectedNameId === null" class="not-chosen">Ни один из профилей (юзер) не выбран!!!</div>
-    <ProfileInfo v-if="selectedNameId !== null" :userId="selectedNameId" />
+    <UsersList @onUserIdSelect="onUserIdSelectHandler" />
+    <div v-if="selectedUserId === null" class="not-chosen">Ни один из профилей (юзер) не выбран!!!</div>
+    <ProfileInfo v-if="selectedUserId !== null" :userId="selectedUserId" />
   </div>
 </template>
 
@@ -17,12 +17,12 @@ export default {
   },
   data() {
     return {
-      selectedNameId: null,
+      selectedUserId: null,
     };
   },
   methods: {
-    onUserSelectName(nameId) {
-      this.selectedNameId = nameId;
+    onUserIdSelectHandler(userId) {
+      this.selectedUserId = userId;
     },
   },
 };
