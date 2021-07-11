@@ -1,18 +1,18 @@
 <template>
   <div class="content">
-    <UsersList @onUserIdSelect="onUserIdSelectHandler" />
+    <UserList @onUserIdSelect="onUserIdSelectHandler" />
     <div v-if="selectedUserId === null" class="not-chosen">Ни один из профилей (юзер) не выбран!!!</div>
     <ProfileInfo v-if="selectedUserId !== null" :userId="selectedUserId" />
   </div>
 </template>
 
 <script>
-import UsersList from "../components/UsersList";
+import UserList from "../components/UserList";
 import ProfileInfo from "../components/ProfileInfo";
 export default {
   name: "Home",
   components: {
-    UsersList,
+    UserList,
     ProfileInfo,
   },
   data() {
