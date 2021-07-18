@@ -2,7 +2,7 @@
   <div class="profile-info">
     <div class="user-ifno">
       <div
-        class="user-ifno__block" v-if="userId !== null"
+        class="user-ifno__block" v-if="userInformation !== null"
       >
         <div class="user-info__title">
           Info about: {{ userInformation.name }}
@@ -44,7 +44,7 @@
           <div
             v-for="albums in userAlbums"
             :key="albums.id"
-            @click="$emit('onAlbumsSelect', albums.id)"
+            @click="onAlbumsIdSelect(albums.id)"
             class="user-albums__item"
           >
             <div class="user-albums__label">{{ albums.title }}</div>
@@ -67,7 +67,7 @@ export default {
   },
   data() {
     return {
-      userInformation: {},
+      userInformation: null,
       userAlbums: [],
     };
   },
@@ -77,13 +77,9 @@ export default {
   },
   methods: {
     async getUserInfo() {
-    if (!this.userId) {
-      return null
-    }
       const userInformation = await fetchOneUser(this.userId);
       if (userInformation) {
         this.userInformation = userInformation;   
-        console.log(this.userInformation);
       }
     },
     async getUserAlbum() {
@@ -96,6 +92,9 @@ export default {
         this.userAlbums = userAlbums;
       }
     },
+    onAlbumsIdSelect(id) {
+      this.$emit('onAlbumsIdSelect', id);
+    }
   },
   watch: {
     async userId(newValue, oldValue) {

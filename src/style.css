@@ -93,7 +93,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .header-nav {
    grid-column: 2 / 3;
+   position: relative;
 }
+
+/* bread crumbs home page */
 
 .header-nav__home {
    color: #333;
@@ -107,9 +110,8 @@ h1, h2, h3, h4, h5, h6 {
    font-size: 20px;
    border-top-left-radius: 5px;
    border-bottom-left-radius: 5px;
-   width: 150px;
-   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-   position: relative;
+   width: 130px;
+   position: absolute;
 }
 
 .header-nav__home:after {
@@ -121,6 +123,82 @@ h1, h2, h3, h4, h5, h6 {
    right: -30px;
    bottom: 0;
    z-index: 1;
+}
+
+/* bread crumbs user */
+
+
+.header-nav__user:after {
+   content: "";
+   border-top: 30px solid transparent;
+   border-bottom: 30px solid transparent;
+   border-left: 30px solid rgb(255, 255, 255);
+   position: absolute;
+   right: -30px;
+   bottom: 0;
+   z-index: 1;
+}
+
+.header-nav__user {
+   padding: 0px 0px 0px 30px;
+   color: #333;
+   font-weight: 500;
+   top: 25px;
+   left: 140px;
+   height: 60px;
+   background: rgb(255, 255, 255);
+   text-align: center;
+   line-height: 60px;
+   font-size: 20px;
+   width: 150px;
+   position: absolute;
+}
+
+.header-nav__user:before {
+   content: "";
+   border-top: 30px solid transparent;
+   border-bottom: 30px solid transparent;
+   border-left: 30px solid #F4F3F1;
+   position: absolute;
+   left: 0px;
+   bottom: 0;
+}
+
+/* bread crumbs photos */
+
+.header-nav__photos {
+   padding: 0px 0px 0px 30px;
+   color: #333;
+   font-weight: 500;
+   top: 25px;
+   left: 300px;
+   height: 60px;
+   background: rgb(255, 255, 255);
+   text-align: center;
+   line-height: 60px;
+   font-size: 20px;
+   width: 170px;
+   position: absolute;
+}
+
+.header-nav__photos:after {
+   content: "";
+   border-top: 30px solid transparent;
+   border-bottom: 30px solid transparent;
+   border-left: 30px solid rgb(255, 255, 255);
+   position: absolute;
+   right: -30px;
+   bottom: 0;
+}
+
+.header-nav__photos:before {
+   content: "";
+   border-top: 30px solid transparent;
+   border-bottom: 30px solid transparent;
+   border-left: 30px solid #F4F3F1;
+   position: absolute;
+   left: 0px;
+   bottom: 0;
 }
 
 .content {
@@ -299,32 +377,31 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Блок фото */
 
-.user-images {
-   grid-column: 3 / 4;
-   padding: 0 0 0 100px;
+.users-photos {
+   grid-column: 2 / 4;
    display: grid;
    grid-template: 1fr 1fr / 1fr 1fr;
 }
 
 @media (max-width: 1000px) {
-   .user-images {
+   .users-photos {
       padding: 0 0 0 30px;
    }
 }
 
 @media (max-width: 850px) {
-   .user-images {
+   .users-photos {
       grid-template: 1fr 1fr / 1fr;
       padding: 50px 0 0 0;
    }
 }
 
-.user-images__image {
+.users-photos__image {
    margin: 0px 0px 40px 0px;
    text-align: center;
 }
 
-.user-images__image img {
+.users-photos__image img {
    -o-object-fit: cover;
    object-fit: cover;
    object-position: center;
@@ -332,62 +409,9 @@ h1, h2, h3, h4, h5, h6 {
    border-radius: 50%;
 }
 
-.user-images__title {
+.users-photos__title {
    margin: 0px 0px 20px 0px;
 }
-
-/* Бургер */
-
-.bread-crumbs {
-   top: 20px;
-   left: 0;
-   height: 60px;
-   background: rgb(255, 255, 255);
-   text-align: center;
-   line-height: 60px;
-   font-size: 20px;
-   color: black;
-   width: 100px;
-   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-   font-family: 'Roboto', sans-serif;
-   grid-column: 2 / 3;
-   position: relative;
-   transition: all 0.25s ease;
-}
-
-.bread-crumbs:after {
-   content: "";
-   border-top: 30px solid transparent;
-   border-bottom: 30px solid transparent;
-   border-left: 30px solid rgb(255, 255, 255);
-   position: absolute;
-   right: -30px;
-   bottom: 0;
-   z-index: 1;
-}
-
-.active.bread-crumbs span {
-   display: block;
-   transform: rotate(-180deg);
-}
-
-.active.bread-crumbs {
-   background: rgb(152, 151, 165);
-   transform: rotate(180deg);
-   left: 30px;
-   transition: all 0.25s ease;
-}
-
-.active.bread-crumbs:after {
-   border-left: 30px solid rgb(152, 151, 165);
-}
-
-.bread-crumbs:first-child {
-   border-top-left-radius: 10px;
-   border-bottom-left-radius: 10px;
-}
-
-/* Бургер */
 
 /* Footer */
 

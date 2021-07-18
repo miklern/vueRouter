@@ -7,6 +7,16 @@
             Home page
           </div>
         </router-link>
+        <router-link :to="{ name: 'Home' }">
+          <div class="header-nav__user">
+            User name
+          </div>
+          </router-link>
+        <router-link :to="{ name: 'Home' }">
+          <div class="header-nav__photos">
+            User's photos
+          </div>
+        </router-link>
       </div>
     </header>
       <router-view /> 
@@ -19,6 +29,7 @@
 <script>
 
 export default {
+  props: ['albumsId'],
 }
 </script>
 <style src="./style.css"></style>
