@@ -26,7 +26,8 @@ export default {
       this.$router.push({ path: `/home/${userId}`});
     },
     onAlbumsIdSelectHandler(albumsId) {
-      this.$router.push({ path: `/home/${this.selectedUserId}/photos/${albumsId}`});
+      // this.$router.push({ path: `/home/${this.selectedUserId}/photos/${albumsId}`});
+      this.$router.push({ name: 'Photos', params: { albumsId: albumsId }});
     }
   },
 };

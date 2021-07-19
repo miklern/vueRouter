@@ -13,7 +13,7 @@ export default {
    name: "UsersPhotos",
    props: {
       albumId: {
-         type: String,
+         type: Number,
       },
    },
    data() {

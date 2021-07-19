@@ -14,6 +14,7 @@ export default {
   },
   data() {
     return {
+      // albumsId: this.route.params.albumsId,
     };
   },
   methods: {
