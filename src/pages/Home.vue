@@ -23,12 +23,19 @@ export default {
   methods: {
     onUserIdSelectHandler(userId) {
       this.selectedUserId = userId;
-      this.$router.push({ path: `/home/${userId}`});
+      this.$router.push({ path: `/home/${userId}`}).catch(()=>{});
+      // this.$router.push({ name: 'Home', params: { id: userId }}).catch(()=>{});
     },
     onAlbumsIdSelectHandler(albumsId) {
       // this.$router.push({ path: `/home/${this.selectedUserId}/photos/${albumsId}`});
       this.$router.push({ name: 'Photos', params: { albumsId: albumsId }});
     }
   },
+  watch: {
+      '$route'(to, from) {
+      console.log(to);
+      console.log(from);
+    }
+  }
 };
 </script>

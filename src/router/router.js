@@ -47,12 +47,14 @@ const routes = [
       path: '/home',
       name: 'Home',
       component: Home,
-   },
-   {
-      path: '/home/:id',
-      name: 'Home',
-      component: Home, 
       props: true,
+      children: [
+         {
+            path: ':id',
+            name: 'User',
+            component: Home,
+         }
+      ]
    },
    {
       path: '/home/:id/photos/:albumsId',

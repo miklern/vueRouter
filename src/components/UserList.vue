@@ -17,6 +17,7 @@
 <script>
 import { fetchUserList } from "../services/users";
 export default {
+  props: ['id'],
   name: "UserList",
   data() {
     return {
@@ -33,7 +34,7 @@ export default {
   methods: {
     onUserIdSelect(id) {
       this.activeUserId = id;
-      this.$emit('onUserIdSelect', id);
+      this.$emit('onUserIdSelect', id);  
     }
   }
 };
