@@ -17,7 +17,11 @@
 <script>
 import { fetchUserList } from "../services/users";
 export default {
-  props: ['id'],
+  props: {
+    routeId: {
+      type: String,
+    }
+  },
   name: "UserList",
   data() {
     return {
@@ -35,6 +39,15 @@ export default {
     onUserIdSelect(id) {
       this.activeUserId = id;
       this.$emit('onUserIdSelect', id);  
+      console.log(this.routeId);
+      
+    }
+  },
+  watch: {
+    async routeId() {
+      if ( this.routeId !== null ) {
+        await this.onUserIdSelect(this.routeId);
+      }
     }
   }
 };

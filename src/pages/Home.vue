@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <UserList @onUserIdSelect="onUserIdSelectHandler" />
+    <UserList :routeId="routeId" @onUserIdSelect="onUserIdSelectHandler" />
     <div v-if="selectedUserId === null" class="not-chosen">Ни один из профилей (юзер) не выбран!!!</div>
     <ProfileInfo v-if="selectedUserId !== null" :userId="selectedUserId" @onAlbumsIdSelect="onAlbumsIdSelectHandler"/>
   </div>
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       selectedUserId: null,
+      routeId: null,
     };
   },
   methods: {
@@ -32,9 +33,15 @@ export default {
     }
   },
   watch: {
-      '$route'(to, from) {
-      console.log(to);
-      console.log(from);
+      // '$route'(to, from) {
+      // console.log(to);
+      // console.log(from);
+    //}
+    async selectedUserId() {
+      if ( this.$route.params.id !== null ) {
+        this.routeId = this.$route.params.id;
+        console.log(this.routeId);    
+      }
     }
   }
 };

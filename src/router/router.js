@@ -44,17 +44,16 @@ Vue.use(VueRouter);
 
 const routes = [
    {
-      path: '/home',
+      path: '/',
       name: 'Home',
       component: Home,
       props: true,
-      children: [
-         {
-            path: ':id',
-            name: 'User',
-            component: Home,
-         }
-      ]
+   },
+   {
+      path: '/home/:id',
+      name: 'User',
+      component: Home,
+      props: true,
    },
    {
       path: '/home/:id/photos/:albumsId',
