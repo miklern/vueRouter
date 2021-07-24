@@ -17,16 +17,17 @@
 <script>
 import { fetchUserList } from "../services/users";
 export default {
-  props: {
-    routeId: {
-      type: String,
-    }
-  },
+  // props: {
+  //   routeId: {
+  //     type: String,
+  //   }
+  // },
   name: "UserList",
   data() {
     return {
       userList: [],
       activeUserId: null,
+      activeRoute: this.$route.params.id,
     };
   },
   async created() {
@@ -38,17 +39,19 @@ export default {
   methods: {
     onUserIdSelect(id) {
       this.activeUserId = id;
-      this.$emit('onUserIdSelect', id);  
-      console.log(this.routeId);
-      
+      this.$emit('onUserIdSelect', id);
     }
   },
   watch: {
-    async routeId() {
-      if ( this.routeId !== null ) {
-        await this.onUserIdSelect(this.routeId);
+    async '$route.params.id'() {
+      if ( this.$route.params.id === undefined) {
+        await this.onUserIdSelect(null);
+      } else {
+        await this.onUserIdSelect(this.$route.params.id);
+        console.log(this.$route.params.id);
+        
       }
-    }
+    },
   }
 };
 </script>
