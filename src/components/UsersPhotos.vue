@@ -12,7 +12,7 @@ import { fetchGetPhotos } from "../services/photos";
 export default {
    name: "UsersPhotos",
    props: {
-      albumId: {
+      albumsId: {
          type: Number,
       },
    },
@@ -27,8 +27,8 @@ export default {
    methods: {
    async getUsersPhotos() {
       const filters = {};
-      if (this.albumId !== null) {
-         filters.albumId = this.albumId;
+      if (this.albumsId !== null) {
+         filters.albumId = this.albumsId;
       }
       const usersPhotos = await fetchGetPhotos(filters);
       if (usersPhotos) {
@@ -37,7 +37,7 @@ export default {
       },
    },
    watch: {
-      async albumId(newValue, oldValue) {
+      async albumsId(newValue, oldValue) {
       if (newValue !== oldValue) {
             await this.getUsersPhotos();
          }

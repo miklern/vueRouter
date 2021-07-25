@@ -8,12 +8,12 @@
           </div>
         </router-link>
         <router-link :to="{ name: 'User' }">
-          <div v-if="$route.params.id !== undefined && $route.params.id !== null" class="header-nav__user">
-            User name
+          <div v-if="$route.params.id !== undefined" class="header-nav__user">
+            User name: {{  $route.params.id }}
           </div>
           </router-link>
           <div v-if="$route.params.albumsId !== undefined" class="header-nav__photos">
-            User's photos
+            User's album: {{ $route.params.albumsId }}
           </div>
       </div>
     </header>

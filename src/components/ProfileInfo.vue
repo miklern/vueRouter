@@ -73,7 +73,7 @@ export default {
   },
   async created() {
     await this.getUserInfo();
-    await this.getUserAlbum();
+    await this.getUserAlbum(); 
   },
   methods: {
     async getUserInfo() {

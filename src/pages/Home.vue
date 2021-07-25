@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <UserList @onUserIdSelect="onUserIdSelectHandler" /> 
+    <UserList :routeId="id" @onUserIdSelect="onUserIdSelectHandler" /> 
     <div v-if="selectedUserId === null" class="not-chosen">Ни один из профилей (юзер) не выбран!!!</div>
     <ProfileInfo v-if="selectedUserId !== null" :userId="selectedUserId" @onAlbumsIdSelect="onAlbumsIdSelectHandler"/>
   </div>
@@ -10,6 +10,7 @@
 import UserList from "../components/UserList";
 import ProfileInfo from "../components/ProfileInfo";
 export default {
+  props: ['id'],
   name: "Home",
   components: {
     UserList,
@@ -18,33 +19,32 @@ export default {
   data() {
     return {
       selectedUserId: null,
-      // routeId: null, :routeId="routeId"
     };
   },
+  async created() {
+    await this.userIdInRouteProps();
+  },
   methods: {
-    onUserIdSelectHandler(userId) {
+    async userIdInRouteProps() {
+        if ( this.$route.params.id !== undefined) {
+        this.selectedUserId = this.id;
+      }
+    },
+    onUserIdSelectHandler(userId) {      
       this.selectedUserId = userId;
-      // this.$router.push({ path: `/home/${userId}`}).catch(()=>{});
       this.$router.push({ name: 'User', params: { id: userId }}).catch(()=>{});
     },
     onAlbumsIdSelectHandler(albumsId) {
-      // this.$router.push({ path: `/home/${this.selectedUserId}/photos/${albumsId}`});
-      this.$router.push({ name: 'Photos', params: { albumsId: albumsId }});
+      this.$router.push({ name: 'Photos', params: { albumsId: albumsId }}).catch(()=>{});
     }
   },
-  watch: {
-      '$route.params.id'() {
-        if ( this.$route.params.id === undefined) {
-          this.selectedUserId = null;
-        }
-      // console.log(to);
-      // console.log(from);
-    }
-    // async selectedUserId() {
-    //   if ( this.$route.params.id !== null ) {
-    //     this.routeId = this.$route.params.id; 
-    //   }
-    // }
+    watch: {
+    async '$route.params.id'() {
+      if ( this.$route.params.id === undefined) {
+        this.selectedUserId = null;
+      }
+      await this.userIdInRouteProps();
+    },
   }
 };
 </script>

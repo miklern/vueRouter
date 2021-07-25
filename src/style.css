@@ -109,8 +109,15 @@ h1, h2, h3, h4, h5, h6 {
    font-size: 20px;
    border-top-left-radius: 5px;
    border-bottom-left-radius: 5px;
-   width: 130px;
+   width: 200px;
    position: absolute;
+}
+
+@media (max-width: 680px){
+   .header-nav__home {
+      font-size: 14px;
+      width: 140px;
+   }
 }
 
 .header-nav__home:after {
@@ -143,14 +150,22 @@ h1, h2, h3, h4, h5, h6 {
    color: #333;
    font-weight: 500;
    top: 25px;
-   left: 140px;
+   left: 210px;
    height: 60px;
    background: rgb(255, 255, 255);
    text-align: center;
    line-height: 60px;
    font-size: 20px;
-   width: 150px;
+   width: 200px;
    position: absolute;
+}
+
+@media (max-width: 680px){
+   .header-nav__user {
+      font-size: 14px;
+      width: 140px;
+      left: 150px;
+   }
 }
 
 .header-nav__user:before {
@@ -170,14 +185,22 @@ h1, h2, h3, h4, h5, h6 {
    color: #333;
    font-weight: 500;
    top: 25px;
-   left: 300px;
+   left: 420px;
    height: 60px;
    background: rgb(255, 255, 255);
    text-align: center;
    line-height: 60px;
    font-size: 20px;
-   width: 170px;
+   width: 200px;
    position: absolute;
+}
+
+@media (max-width: 680px){
+   .header-nav__photos {
+      font-size: 14px;
+      width: 140px;
+      left: 300px;
+   }
 }
 
 .header-nav__photos:after {

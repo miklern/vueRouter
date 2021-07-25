@@ -47,19 +47,18 @@ const routes = [
       path: '/',
       name: 'Home',
       component: Home,
-      props: true,
    },
    {
       path: '/home/:id',
       name: 'User',
       component: Home,
-      props: true,
+      props: ( route ) => ({ id: Number(route.params.id) }),
    },
    {
       path: '/home/:id/photos/:albumsId',
       name: 'Photos',
       component: Photos,
-      props: true,
+      props: ( route ) => ({ albumsId: Number(route.params.albumsId) }),
    },
 ]  
 

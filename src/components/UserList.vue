@@ -17,40 +17,45 @@
 <script>
 import { fetchUserList } from "../services/users";
 export default {
-  // props: {
-  //   routeId: {
-  //     type: String,
-  //   }
-  // },
+  props: {
+    routeId: {
+      type: Number,
+    }
+  },
   name: "UserList",
   data() {
     return {
       userList: [],
       activeUserId: null,
-      activeRoute: this.$route.params.id,
     };
   },
   async created() {
-    const userList = await fetchUserList();
-    if (userList) {
-      this.userList = userList;
-    }
+    await this.getUserList();
+    await this.activeUserIdInRoute();
   },
   methods: {
+    async getUserList() {
+      const userList = await fetchUserList();
+      if (userList) {
+        this.userList = userList;
+      }
+    },
     onUserIdSelect(id) {
       this.activeUserId = id;
       this.$emit('onUserIdSelect', id);
+    },
+    async activeUserIdInRoute() {
+      if ( this.$route.params.id !== undefined ) {
+        this.activeUserId = this.routeId;
     }
+      }
   },
   watch: {
-    async '$route.params.id'() {
+    async '$route'() {
       if ( this.$route.params.id === undefined) {
-        await this.onUserIdSelect(null);
-      } else {
-        await this.onUserIdSelect(this.$route.params.id);
-        console.log(this.$route.params.id);
-        
+        this.activeUserId = null;  
       }
+      await this.activeUserIdInRoute();
     },
   }
 };

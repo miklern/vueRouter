@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <UsersPhotos :albumId="albumsId"/>
+    <UsersPhotos :albumsId="albumsId"/>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ export default {
   },
   data() {
     return {
-      // albumsId: this.route.params.albumsId,
     };
   },
   methods: {
