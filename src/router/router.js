@@ -39,6 +39,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../pages/Home';
 import Photos from '../pages/Photos';
+import User from '../pages/User';
 
 Vue.use(VueRouter);
 
@@ -47,15 +48,17 @@ const routes = [
       path: '/',
       name: 'Home',
       component: Home,
+      meta: { layout: 'UserList' }
    },
    {
-      path: '/home/:id',
+      path: '/user/:id',
       name: 'User',
-      component: Home,
+      component: User,
       props: ( route ) => ({ id: Number(route.params.id) }),
+      meta: { layout: 'UserList' }
    },
    {
-      path: '/home/:id/photos/:albumsId',
+      path: '/user/:id/photos/:albumsId',
       name: 'Photos',
       component: Photos,
       props: ( route ) => ({ albumsId: Number(route.params.albumsId) }),

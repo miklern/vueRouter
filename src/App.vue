@@ -17,7 +17,10 @@
           </div>
       </div>
     </header>
-      <router-view /> 
+    <main class="main"> 
+      <component :is="layouts" />
+      <router-view />
+    </main>
     <footer class="footer">
       <div class="footer__text">Lorem ipsum dolor sit amet.</div>
     </footer>
@@ -25,14 +28,22 @@
 </template>
 
 <script>
-
+import UserList from "./layouts/UserList"
 export default {
+  components: {
+    UserList,
+  },
   data() {
-      return {
-      };
-   },
-   methods: {
-   },
+    return {
+    };
+  },
+  methods: {
+  },
+  computed: {
+    layouts() {
+      return this.$route.meta.layout
+    }
+  }
 }
 </script>
 <style src="./style.css"></style>

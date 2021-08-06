@@ -17,11 +17,7 @@
 <script>
 import { fetchUserList } from "../services/users";
 export default {
-  props: {
-    routeId: {
-      type: Number,
-    }
-  },
+  props: ['id'],
   name: "UserList",
   data() {
     return {
@@ -41,22 +37,24 @@ export default {
       }
     },
     onUserIdSelect(id) {
-      this.activeUserId = id;
-      this.$emit('onUserIdSelect', id);
+        this.activeUserId = id;
+        this.$router.push({ name: 'User', params: { id: id }}).catch(()=>{});
     },
     async activeUserIdInRoute() {
       if ( this.$route.params.id !== undefined ) {
-        this.activeUserId = this.routeId;
+        this.activeUserId = Number( this.$route.params.id ) ;
+        console.log(typeof this.activeUserId);
+        
     }
       }
   },
   watch: {
     async '$route'() {
-      if ( this.$route.params.id === undefined) {
-        this.activeUserId = null;  
+      if ( this.$route.params.id === undefined ) {
+        this.activeUserId = null;
       }
       await this.activeUserIdInRoute();
-    },
+    } 
   }
 };
 </script>
