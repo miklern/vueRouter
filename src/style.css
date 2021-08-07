@@ -73,6 +73,10 @@ h1, h2, h3, h4, h5, h6 {
 /* Обнуление стилей */
 
 #app {
+   height: 100%;
+}
+
+.wrapper {
    min-height: 100%;
    overflow: hidden;
    font-family: 'Roboto', sans-serif;

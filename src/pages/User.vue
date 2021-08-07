@@ -1,16 +1,32 @@
 <template>
-   <div class="content">
-      <ProfileInfo v-if="selectedUserId !== null" :userId="selectedUserId" @onAlbumsIdSelect="onAlbumsIdSelectHandler"/>
+   <div class="wrapper">
+      <Header>
+      </Header>
+      <UserList>
+         <div class="content">
+            <ProfileInfo v-if="selectedUserId !== null" :userId="selectedUserId" @onAlbumsIdSelect="onAlbumsIdSelectHandler"/>
+         </div>
+      </UserList>
+      <Footer>
+      </Footer>
    </div>
 </template>
 
 <script>
+
 import ProfileInfo from "../components/ProfileInfo";
+import UserList from '../layouts/UserList';
+import Footer from '../layouts/Footer';
+import Header from '../layouts/Header';
+
 export default {
    props: ['id'],
    name: "Home",
    components: {
    ProfileInfo,
+   UserList,
+   Header,
+   Footer,
    },
    data() {
       return {

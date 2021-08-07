@@ -48,14 +48,13 @@ const routes = [
       path: '/',
       name: 'Home',
       component: Home,
-      meta: { layout: 'UserList' }
+      props: ( route ) => ({ id: Number(route.params.id) }),
    },
    {
       path: '/user/:id',
       name: 'User',
       component: User,
       props: ( route ) => ({ id: Number(route.params.id) }),
-      meta: { layout: 'UserList' }
    },
    {
       path: '/user/:id/photos/:albumsId',
