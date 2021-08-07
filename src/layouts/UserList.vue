@@ -17,7 +17,6 @@
 <script>
 import { fetchUserList } from "../services/users";
 export default {
-  props: ['id'],
   name: "UserList",
   data() {
     return {
@@ -43,8 +42,6 @@ export default {
     async activeUserIdInRoute() {
       if ( this.$route.params.id !== undefined ) {
         this.activeUserId = Number( this.$route.params.id ) ;
-        console.log(typeof this.activeUserId);
-        
     }
       }
   },

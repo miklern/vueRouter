@@ -7,13 +7,11 @@
 <script>
 
 export default {
-  props: ['id'],
   name: "Home",
   components: {
   },
   data() {
     return {
-      selectedUserId: null,
     };
   },
   methods: {
