@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       userList: [],
-      activeUserId: null,
+      activeUserId: Number( this.$route.params.id ),
     };
   },
   async created() {
@@ -50,5 +50,12 @@ export default {
       }
     }
   },
+  watch: {
+    '$route'( newValue, oldValue ) {
+      if ( newValue !== oldValue ) {
+        this.activeUserId = Number( this.$route.params.id );
+      }
+    }
+  }
 };
 </script>

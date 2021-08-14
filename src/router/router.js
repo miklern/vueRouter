@@ -48,7 +48,6 @@ const routes = [
       path: '/',
       name: 'Home',
       component: Home,
-      props: ( route ) => ({ id: Number(route.params.id) }),
    },
    {
       path: '/user/:id',
